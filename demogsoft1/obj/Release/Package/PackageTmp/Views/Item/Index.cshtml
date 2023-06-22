@@ -1,0 +1,52 @@
+﻿@model IEnumerable<demogsoft1.Models.mstItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddItem" ,"Item")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountFromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstBrand.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstDepartment.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstProduct.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstTax.TaxName)
+        </th>
+        <th></th>
+    </tr>
+
+
+
+</table>

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchaseItem>
+
+@{
+    ViewBag.Title = "PurchaseItem";
+}
+
+<h2>Purchase Item</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddPurchaseItem", "Purchase", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurcRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstItem.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstTax.TaxName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trnPurchase.PurchaseType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurcRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGSTPrc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGSTAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGSTPrc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGSTAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGSTPrc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGSTAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstItem.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstTax.TaxName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trnPurchase.PurchaseType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPurchaseItem", new { id=item.PurchaseItemId }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Details", "DetailsPurchaseaccount", new { id=item.PurchaseItemId }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Delete", "DeletePurchaseItem", new { id=item.PurchaseItemId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Period Report", "GetPurchaseDate", "Purchase", new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Monthly Report", "GetMonth", "Purchase", new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Year Report", "GetYear", "Purchase", new { @class = "btn btn-warning" }) 
+</div>

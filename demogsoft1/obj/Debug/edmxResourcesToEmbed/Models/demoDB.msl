@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gsoftDBModelStoreContainer" CdmEntityContainer="gsoftDBEntities">
+    <EntitySetMapping Name="mstAccounts">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstAccount">
+        <MappingFragment StoreEntitySet="mstAccount">
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Address_" ColumnName="Address " />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+          <ScalarProperty Name="PANNo" ColumnName="PANNo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BsgrId" ColumnName="BsgrId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstBrands">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstBrand">
+        <MappingFragment StoreEntitySet="mstBrand">
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstBsgrGroups">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstBsgrGroup">
+        <MappingFragment StoreEntitySet="mstBsgrGroup">
+          <ScalarProperty Name="BsgrId" ColumnName="BsgrId" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstCompanies">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstCompany">
+        <MappingFragment StoreEntitySet="mstCompany">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstDepartments">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstDepartment">
+        <MappingFragment StoreEntitySet="mstDepartment">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstItems">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstItem">
+        <MappingFragment StoreEntitySet="mstItem">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="DiscountPrc" ColumnName="DiscountPrc" />
+          <ScalarProperty Name="DiscountFromDate" ColumnName="DiscountFromDate" />
+          <ScalarProperty Name="DiscountToDate" ColumnName="DiscountToDate" />
+          <ScalarProperty Name="DefaultQty" ColumnName="DefaultQty" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstProducts">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstProduct">
+        <MappingFragment StoreEntitySet="mstProduct">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstStates">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstState">
+        <MappingFragment StoreEntitySet="mstState">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mstTaxes">
+      <EntityTypeMapping TypeName="gsoftDBModel.mstTax">
+        <MappingFragment StoreEntitySet="mstTax">
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+          <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+          <ScalarProperty Name="SGSTPrc" ColumnName="SGSTPrc" />
+          <ScalarProperty Name="CGSTPrc" ColumnName="CGSTPrc" />
+          <ScalarProperty Name="IGSTPrc" ColumnName="IGSTPrc" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trnPurchases">
+      <EntityTypeMapping TypeName="gsoftDBModel.trnPurchase">
+        <MappingFragment StoreEntitySet="trnPurchase">
+          <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+          <ScalarProperty Name="PurchaseType" ColumnName="PurchaseType" />
+          <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+          <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+          <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trnPurchaseItems">
+      <EntityTypeMapping TypeName="gsoftDBModel.trnPurchaseItem">
+        <MappingFragment StoreEntitySet="trnPurchaseItem">
+          <ScalarProperty Name="PurchaseItemId" ColumnName="PurchaseItemId" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="PurcRate" ColumnName="PurcRate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SGSTPrc" ColumnName="SGSTPrc" />
+          <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+          <ScalarProperty Name="CGSTPrc" ColumnName="CGSTPrc" />
+          <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+          <ScalarProperty Name="IGSTPrc" ColumnName="IGSTPrc" />
+          <ScalarProperty Name="IGSTAmount" ColumnName="IGSTAmount" />
+          <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+          <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="SalesRate" ColumnName="SalesRate" />
+          <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+          <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trnSales">
+      <EntityTypeMapping TypeName="gsoftDBModel.trnSale">
+        <MappingFragment StoreEntitySet="trnSales">
+          <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+          <ScalarProperty Name="SalesType" ColumnName="SalesType" />
+          <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+          <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+          <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+          <ScalarProperty Name="NetAmt" ColumnName="NetAmt" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="CGSTAmt" ColumnName="CGSTAmt" />
+          <ScalarProperty Name="SGSTAmt" ColumnName="SGSTAmt" />
+          <ScalarProperty Name="IGSTAmt" ColumnName="IGSTAmt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trnSalesItems">
+      <EntityTypeMapping TypeName="gsoftDBModel.trnSalesItem">
+        <MappingFragment StoreEntitySet="trnSalesItem">
+          <ScalarProperty Name="SalesItemId" ColumnName="SalesItemId" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SGSTPrc" ColumnName="SGSTPrc" />
+          <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+          <ScalarProperty Name="CGSTPrc" ColumnName="CGSTPrc" />
+          <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+          <ScalarProperty Name="IGSTPrc" ColumnName="IGSTPrc" />
+          <ScalarProperty Name="IGSTAmount" ColumnName="IGSTAmount" />
+          <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+          <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="SalesRate" ColumnName="SalesRate" />
+          <ScalarProperty Name="SalesId" ColumnName="SalesId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+          <ScalarProperty Name="DIscPrc" ColumnName="DIscPrc" />
+          <ScalarProperty Name="DiscAmt" ColumnName="DiscAmt" />
+          <ScalarProperty Name="NetAmt" ColumnName="NetAmt" />
+          <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,263 @@
+﻿@model demogsoft1.Models.trnSale
+
+@{
+    ViewBag.Title = "DetailsSalesItems";
+}
+
+<h2>Details Sales Items</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CGSTAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SGSTAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IGSTAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mstAccount.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mstAccount.AccountName)
+        </dd>
+
+    </dl>
+</div>
+<h4>Sales Product Details</h4>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+               Qty
+            </th>
+            <th>
+               Amount
+            </th>
+            <th>
+               SGSTPrc
+            </th>
+            <th>
+                SGSTAmount
+            </th>
+            <th>
+                CGSTPrc
+            </th>
+            <th>
+               CGSTAmount
+            </th>
+            <th>
+                IGSTPrc
+            </th>
+            <th>
+              IGSTAmount
+            </th>
+            <th>
+                TotalAmt
+            </th>
+            <th>
+                MRP
+            </th>
+            <th>
+               SalesRate
+            </th>
+            <th>
+                DIscPrc
+            </th>
+            <th>
+                DiscAmt
+            </th>
+            <th>
+               NetAmt
+            </th>
+            <th>
+                VoucherDate
+            </th>
+            <th>
+               ItemName
+            </th>
+            <th>
+                TaxName
+            </th>
+            <th>
+               SalesType
+            </th>
+
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model.trnSalesItems)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Qty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SGSTPrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SGSTAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CGSTPrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CGSTAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IGSTPrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IGSTAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalAmt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MRP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalesRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIscPrc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiscAmt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NetAmt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VoucherDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mstItem.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mstTax.TaxName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trnSale.SalesType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditSalesItem", new { id = item.SalesItemId }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Details", "DetailsSalesAccount", new { id = item.SalesItemId }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "DeletesalesItem", new { id = item.SalesItemId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>No data in model</p>
+        }
+    </table>
+</div>
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.NetAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetAmt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CGSTAmt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SGSTAmt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IGSTAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IGSTAmt)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditSalesAccount", new { id = Model.SalesId },new {@class="btn btn-success"}) |
+    @Html.ActionLink("Back to List", "SalesList","Sales",new {@class="btn btn-warning"})
+</p>

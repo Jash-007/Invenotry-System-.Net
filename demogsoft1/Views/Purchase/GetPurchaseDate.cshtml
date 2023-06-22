@@ -1,0 +1,26 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchaseItem>
+
+@{
+    ViewBag.Title = "GetPurchaseDate";
+}
+
+<h2> Purchase Period</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddPurchaseItem","Purchase",new {@class="btn btn-primary"})
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<h4>Select period to get the details of that particular period</h4>
+<div>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required>
+</div>
+<div>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required>
+</div>
+    <button type="submit" class="btn btn-success">Generate</button>
+
+}

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<demogsoft1.Models.trnSale>
+
+@{
+    ViewBag.Title = "SalesList";
+}
+
+<h2>Sales List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddSaleAccount", "Sales", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add New SalesItem", "AddSalesItem", "Sales", new { @class = "btn btn-warning" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstAccount.AccountName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NetAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGSTAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGSTAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGSTAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstAccount.AccountName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditSalesAccount", new { id=item.SalesId },new {@class="btn btn-success"}) 
+            @Html.ActionLink("Details", "DetailsSalesItems", new { id=item.SalesId },new {@class="btn btn-primary"}) 
+            @Html.ActionLink("Delete", "DeleteSalesAccount", new { id=item.SalesId },new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Period Report", "GetPurchaseDate", "Purchase", new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Monthly Report", "GetMonth", "Purchase", new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Year Report", "GetYear", "Purchase", new { @class = "btn btn-warning" }) |
+
+    @Html.ActionLink("Types Report", "PurchaseTypeReport", "Purchase", new { @class = "btn btn-danger" })
+</div>

@@ -1,0 +1,276 @@
+﻿@model demogsoft1.Models.trnPurchase
+
+@{
+    ViewBag.Title = "Edit Purchase";
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}
+
+<h2>Edit Purchase</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Rest of your form fields -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PurchaseType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.RadioButtonFor(model => model.PurchaseType, "Pur", new { htmlAttributes = new { @class = "form-control" } }) Pur
+                        @Html.RadioButtonFor(model => model.PurchaseType, "PurRet", new { htmlAttributes = new { @class = "form-control" } }) PurRet
+                        @Html.ValidationMessageFor(model => model.PurchaseType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvoiceType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.RadioButtonFor(model => model.InvoiceType, "GST", new { htmlAttributes = new { @class = "form-control" } }) GST
+                        @Html.RadioButtonFor(model => model.InvoiceType, "IGST", new { htmlAttributes = new { @class = "form-control" } }) IGST
+                        @Html.ValidationMessageFor(model => model.InvoiceType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VoucherNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VoucherNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VoucherNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VoucherDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VoucherDate, new { htmlAttributes = new { @class = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.VoucherDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountId, "AccountId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.AccountId, ViewBag.AccList as SelectList, "Select an Account", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <table id="itemTable" class="table">
+            <thead>
+                <tr>
+                    <th>Qty</th>
+                    <th>Item</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.trnPurchaseItems.Count; i++)
+                {
+                    var item = Model.trnPurchaseItems[i];
+                    <tr class="item-row">
+                        <td>
+                            @Html.EditorFor(m => m.trnPurchaseItems[i].Qty, new { htmlAttributes = new { @class = "form-control", placeholder = "Qty" } })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].Qty, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.trnPurchaseItems[i].PurcRate, new { htmlAttributes = new { @class = "form-control", id = "purcrate", placeholder = "PurcRate" } })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].PurcRate, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.trnPurchaseItems[i].ItemId, ViewBag.ItemList as SelectList, " Item", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].ItemId, "", new { @class = "text-danger" })
+
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.trnPurchaseItems[i].TaxId, ViewBag.TaxList as SelectList, "TaxType", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].TaxId, "", new { @class = "text-danger" })
+
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.trnPurchaseItems[i].Amount, new { htmlAttributes = new { @readonly = "readonly", id = "netAmt" } })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].Amount, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.trnPurchaseItems[i].MRP, new { htmlAttributes = new { @class = "form-control", id = "MRP", placeholder = "MRP" } })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].MRP, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.trnPurchaseItems[i].SalesRate, new { htmlAttributes = new { @class = "form-control", id = "SalesRate", placeholder = "SalesRate" } })
+                            @Html.ValidationMessageFor(m => m.trnPurchaseItems[i].SalesRate, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="removeItemRow(this)">Remove</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-primary" onclick="addItemRow()">Add Item</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/Bootstrap@5.2.2/dist/js/Bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/Bootstrap@5.2.2/dist/js/Bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy" // Customize the date format if needed
+            });
+        });
+    </script>
+    <script>
+        function fun() {
+            const para_main = document.createElement("div");
+            const para1 = document.createElement("table");
+
+            para_main.appendChild(para1);
+
+
+            const element = document.getElementById("itemTable");
+            element.appendChild(para_main);
+
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        function addItemRow() {
+            var table = document.getElementById("itemTable");
+            var count = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
+
+            var row = document.createElement("tr");
+            row.classList.add("item-row");
+
+            row.innerHTML = `
+                <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="Qty" name="trnPurchaseItems[${count}].Qty" placeholder="Qty" type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnPurchaseItems[${count}].Qty" data-valmsg-replace="true"></span>
+                </td>
+                 <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="purcrate" name="trnPurchaseItems[${count}].PurcRate" placeholder="PurcRate" type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnPurchaseItems[${count}].PurcRate" data-valmsg-replace="true"></span>
+                </td>
+                <td>
+     <select class="form-control" data-val="true" data-val-required="The Item field is required." id="trnPurchaseItems_${count}__ItemId" name="trnPurchaseItems[${count}].ItemId">
+            <option value="">Select an Item</option>
+             @foreach (var item in ViewBag.ItemList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+
+        </select>
+    </td>
+     <td>
+     <select class="form-control" data-val="true" data-val-required="The Item field is required." id="trnPurchaseItems_${count}__TaxId" name="trnPurchaseItems[${count}].TaxId">
+            <option value="">Select an TaxType</option>
+             @foreach (var item in ViewBag.TaxList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+
+        </select>
+    </td>
+          <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="TotalAmt" name="trnPurchaseItems[${count}].TotalAmt"  type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnPurchaseItems[${count}].TotalAmt" data-valmsg-replace="true"></span>
+                </td>
+        <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="MRP" name="trnPurchaseItems[${count}].MRP" placeholder="MRP" type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnPurchaseItems[${count}].MRP" data-valmsg-replace="true"></span>
+                </td>
+          <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="SalesRate" name="trnPurchaseItems[${count}].SalesRate" placeholder="SalesRate" type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnPurchaseItems[${count}].SalesRate" data-valmsg-replace="true"></span>
+                </td>
+                <!-- Add more columns for item fields -->
+
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeItemRow(this)">Remove</button>
+                </td>
+            `;
+
+            table.getElementsByTagName("tbody")[0].appendChild(row);
+        }
+
+        function removeItemRow(button) {
+            var row = button.closest(".item-row");
+            row.remove();
+        }
+        function calculateTotal() {
+            var items = document.getElementsByClassName("item-row");
+            var total = 0;
+
+            for (var i = 0; i < items.length; i++) {
+                var qty = parseFloat(items[i].querySelector("#Qty").value);
+                // Retrieve the amount field value for the corresponding item and calculate the subtotal
+                // You can modify the selector based on your actual field names
+                var amount = parseFloat(items[i].querySelector("#purcrate").value);
+
+                total += qty * amount;
+            }
+
+            document.getElementById("totalAmount").value = total.toFixed(2);
+            }
+            function calNetamt() {
+                var items = document.getElementsByClassName("item-row");
+                var amt = 0;
+                for (var i = 0; i < items.length; i++) {
+                    var qty = parseFloat(items[i].querySelector("#Qty").value);
+                    // Retrieve the amount field value for the corresponding item and calculate the subtotal
+                    // You can modify the selector based on your actual field names
+                    var amount = parseFloat(items[i].querySelector("#purcrate").value);
+                    amt = qty * amount;
+                }
+                document.getElementById("netAmt").value = amt.toFixed(2);
+            }
+            document.addEventListener("input", calNetamt);
+        // Call the calculateTotal function whenever the input values change
+        document.addEventListener("input", calculateTotal);
+    </script>
+}
+
+

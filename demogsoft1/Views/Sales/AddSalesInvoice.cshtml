@@ -1,0 +1,275 @@
+﻿@model demogsoft1.Models.trnSale
+@{
+    ViewBag.Title = "AddSalesInvoice";
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/Bootstrap@5.2.2/dist/css/Bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+}
+
+<h2>AddSalesInvoice</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>trnSale</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SalesType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.RadioButtonFor(model => model.SalesType, "Sales", new { htmlAttributes = new { @class = "form-control" } }) Sales
+                        @Html.RadioButtonFor(model => model.SalesType, "SalesRet", new { htmlAttributes = new { @class = "form-control" } }) SalesRet
+                        @Html.ValidationMessageFor(model => model.SalesType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VoucherDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VoucherDate, new { htmlAttributes = new { @class = "datepicker" } })
+                        @Html.ValidationMessageFor(model => model.VoucherDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VoucherNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VoucherNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VoucherNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvoiceType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.RadioButtonFor(model => model.InvoiceType, "GST", new { htmlAttributes = new { @class = "form-control" } }) GST
+                        @Html.RadioButtonFor(model => model.InvoiceType, "IGST", new { htmlAttributes = new { @class = "form-control" } }) IGST
+                        @Html.ValidationMessageFor(model => model.InvoiceType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountId, "AccountId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.AccountId, ViewBag.AccList as SelectList, "Select an Account", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <table id="itemTable" class="table">
+            <thead>
+                <tr>
+
+
+                    <th>Item</th>
+                    <th>Qty</th>
+
+                    <th>DiscPrc</th>
+
+                    <!-- Add more column headers for item fields -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.trnSalesItems.Count; i++)
+                {
+                    <tr class="item-row">
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(m => m.trnSalesItems[i].ItemId, ViewBag.ItemList as SelectList, "Select an pid", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.trnSalesItems[i].ItemId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(m => m.trnSalesItems[i].Qty, new { htmlAttributes = new { @class = "form-control", id = "Qty", placeholder = "Qty" } })
+                                    @Html.ValidationMessageFor(m => m.trnSalesItems[i].Qty, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </td>
+
+
+
+
+
+
+
+                        <td>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(m => m.trnSalesItems[i].DIscPrc, new { htmlAttributes = new { @class = "form-control", id = "DIscprc" } })
+                                    @Html.ValidationMessageFor(m => m.trnSalesItems[i].DIscPrc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="removeItemRow(this)">Remove</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Add Item" style="margin-left:70%;" onclick="addItemRow()" class="btn btn-success" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "SalesList", "Sales", new { @class = "btn btn-warning" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/Bootstrap@5.2.2/dist/js/Bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/Bootstrap@5.2.2/dist/js/Bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy" // Customize the date format if needed
+            });
+        });
+    </script>
+    <script>
+        function fun() {
+            const para_main = document.createElement("div");
+            const para1 = document.createElement("table");
+
+            para_main.appendChild(para1);
+
+
+            const element = document.getElementById("itemTable");
+            element.appendChild(para_main);
+
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        function addItemRow() {
+            var table = document.getElementById("itemTable");
+            var count = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
+
+            var row = document.createElement("tr");
+            row.classList.add("item-row");
+
+            row.innerHTML = `
+               <td>
+     <select class="form-control" data-val="true" data-val-required="The Item field is required." id="trnSalesItems_${count}__ItemId" name="trnSalesItems[${count}].ItemId">
+            <option value="">Select an Item</option>
+             @foreach (var item in ViewBag.ItemList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+
+        </select>
+    </td>
+                <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="Qty" name="trnSalesItems[${count}].Qty" placeholder="Qty" type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnSalesItems[${count}].Qty" data-valmsg-replace="true"></span>
+                </td>
+
+
+
+          <td>
+                    <input class="form-control" data-val="true" data-val-required="The Qty field is required." id="DIscprc" name="trnSalesItems[${count}].DIscPrc" placeholder="DiscPrc"  type="text" value="">
+                    <span class="text-danger field-validation-valid" data-valmsg-for="trnSalesItems[${count}].DIscPrc" data-valmsg-replace="true"></span>
+                </td>
+
+
+
+                <!-- Add more columns for item fields -->
+
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeItemRow(this)">Remove</button>
+                </td>
+            `;
+
+            table.getElementsByTagName("tbody")[0].appendChild(row);
+        }
+
+        function removeItemRow(button) {
+            var row = button.closest(".item-row");
+            row.remove();
+        }
+        function calculateTotal() {
+            var items = document.getElementsByClassName("item-row");
+            var total = 0;
+
+            for (var i = 0; i < items.length; i++) {
+                var qty = parseFloat(items[i].querySelector("#Qty").value);
+                // Retrieve the amount field value for the corresponding item and calculate the subtotal
+                // You can modify the selector based on your actual field names
+                var amount = parseFloat(items[i].querySelector("#salesRate").value);
+
+                total += qty * amount;
+            }
+
+            document.getElementById("totalAmount").value = total.toFixed(2);
+            }
+            function calNetamt() {
+                var items = document.getElementsByClassName("item-row");
+                var iamt = 0;
+                var amt = 1;
+                var tamt = 0;
+                for (var i = 0; i < items.length; i++) {
+
+                    var qty = parseFloat(items[i].querySelector("#Qty").value);
+                    // Retrieve the amount field value for the corresponding item and calculate the subtotal
+                    // You can modify the selector based on your actual field names
+                    var amount = parseFloat(items[i].querySelector("#salesRate").value);
+                    var disc = parseFloat(items[i].querySelector('#discprc').value);
+                    iamt = (qty * amount);
+                    amt = iamt - iamt * (disc / 100);
+                    tamt += amt;
+                }
+                document.getElementById("netAmt").value = amt.toFixed(2);
+                document.getElementById("finalprice").value = tamt.toFixed(2);
+            }
+            document.addEventListener("input", calNetamt);
+        // Call the calculateTotal function whenever the input values change
+        document.addEventListener("input", calculateTotal);
+    </script>
+}
+

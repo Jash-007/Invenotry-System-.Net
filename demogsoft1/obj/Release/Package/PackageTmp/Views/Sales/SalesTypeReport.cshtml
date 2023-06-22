@@ -1,0 +1,21 @@
+﻿@model IEnumerable<demogsoft1.Models.trnSale>
+@{
+    ViewBag.Title = "SalesTypeReport";
+}
+
+<h2>SalesTypeReport</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <label>
+        <input type="radio" name="type" id="typesales" value="Sales" checked /> Sales
+    </label>
+    <label>
+        <input type="radio" name="type" id="typesalesret" value="SalesRet" /> SalesRet
+    </label>
+
+    <button type="submit">Generate</button>
+
+}

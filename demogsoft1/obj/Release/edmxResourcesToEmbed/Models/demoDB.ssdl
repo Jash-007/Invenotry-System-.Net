@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gsoftDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="mstAccount">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="ShortName" Type="varchar" MaxLength="15" />
+    <Property Name="Address " Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="100" />
+    <Property Name="PinCode" Type="varchar" MaxLength="6" />
+    <Property Name="Mobile" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="GSTNo" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="PANNo" Type="varchar" MaxLength="12" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="BsgrId" Type="int" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstBrand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstBsgrGroup">
+    <Key>
+      <PropertyRef Name="BsgrId" />
+    </Key>
+    <Property Name="BsgrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstCompany">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstDepartment">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstItem">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ShortName" Type="varchar" MaxLength="32" />
+    <Property Name="DiscountPrc" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="DiscountFromDate" Type="datetime" />
+    <Property Name="DiscountToDate" Type="datetime" />
+    <Property Name="DefaultQty" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="BrandId" Type="int" />
+    <Property Name="TaxId" Type="int" />
+  </EntityType>
+  <EntityType Name="mstProduct">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstState">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mstTax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaxName" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="SGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trnPurchase">
+    <Key>
+      <PropertyRef Name="PurchaseId" />
+    </Key>
+    <Property Name="PurchaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseType" Type="varchar" MaxLength="10" />
+    <Property Name="VoucherNo" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+    <Property Name="InvoiceType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="250" />
+    <Property Name="AccountId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trnPurchaseItem">
+    <Key>
+      <PropertyRef Name="PurchaseItemId" />
+    </Key>
+    <Property Name="PurchaseItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="PurcRate" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalAmt" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MRP" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SalesRate" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="PurchaseId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="TaxId" Type="int" Nullable="false" />
+    <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trnSales">
+    <Key>
+      <PropertyRef Name="SalesId" />
+    </Key>
+    <Property Name="SalesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesType" Type="varchar" MaxLength="10" />
+    <Property Name="VoucherNo" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+    <Property Name="InvoiceType" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NetAmt" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="250" />
+    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="CGSTAmt" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="SGSTAmt" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="IGSTAmt" Type="decimal" Precision="18" Scale="4" />
+  </EntityType>
+  <EntityType Name="trnSalesItem">
+    <Key>
+      <PropertyRef Name="SalesItemId" />
+    </Key>
+    <Property Name="SalesItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IGSTPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IGSTAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TotalAmt" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MRP" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SalesRate" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SalesId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="TaxId" Type="int" Nullable="false" />
+    <Property Name="DIscPrc" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DiscAmt" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="NetAmt" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__mstAccoun__BsgrI__339FAB6E">
+    <End Role="mstBsgrGroup" Type="Self.mstBsgrGroup" Multiplicity="0..1" />
+    <End Role="mstAccount" Type="Self.mstAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstBsgrGroup">
+        <PropertyRef Name="BsgrId" />
+      </Principal>
+      <Dependent Role="mstAccount">
+        <PropertyRef Name="BsgrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mstAccoun__State__3493CFA7">
+    <End Role="mstState" Type="Self.mstState" Multiplicity="1" />
+    <End Role="mstAccount" Type="Self.mstAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstState">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="mstAccount">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mstItem__BrandId__2645B050">
+    <End Role="mstBrand" Type="Self.mstBrand" Multiplicity="0..1" />
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstBrand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="mstItem">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mstItem__Departm__25518C17">
+    <End Role="mstDepartment" Type="Self.mstDepartment" Multiplicity="0..1" />
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstDepartment">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="mstItem">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mstItem__Product__245D67DE">
+    <End Role="mstProduct" Type="Self.mstProduct" Multiplicity="0..1" />
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstProduct">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="mstItem">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__mstItem__TaxId__2739D489">
+    <End Role="mstTax" Type="Self.mstTax" Multiplicity="0..1" />
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstTax">
+        <PropertyRef Name="TaxId" />
+      </Principal>
+      <Dependent Role="mstItem">
+        <PropertyRef Name="TaxId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnPurcha__Accou__42E1EEFE">
+    <End Role="mstAccount" Type="Self.mstAccount" Multiplicity="1" />
+    <End Role="trnPurchase" Type="Self.trnPurchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstAccount">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="trnPurchase">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnPurcha__ItemI__19AACF41">
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="1" />
+    <End Role="trnPurchaseItem" Type="Self.trnPurchaseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstItem">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="trnPurchaseItem">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnPurcha__Purch__1A9EF37A">
+    <End Role="trnPurchase" Type="Self.trnPurchase" Multiplicity="1" />
+    <End Role="trnPurchaseItem" Type="Self.trnPurchaseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trnPurchase">
+        <PropertyRef Name="PurchaseId" />
+      </Principal>
+      <Dependent Role="trnPurchaseItem">
+        <PropertyRef Name="PurchaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnPurcha__TaxId__1B9317B3">
+    <End Role="mstTax" Type="Self.mstTax" Multiplicity="1" />
+    <End Role="trnPurchaseItem" Type="Self.trnPurchaseItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstTax">
+        <PropertyRef Name="TaxId" />
+      </Principal>
+      <Dependent Role="trnPurchaseItem">
+        <PropertyRef Name="TaxId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnSales__Accoun__607251E5">
+    <End Role="mstAccount" Type="Self.mstAccount" Multiplicity="1" />
+    <End Role="trnSales" Type="Self.trnSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstAccount">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="trnSales">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnSalesI__ItemI__2CBDA3B5">
+    <End Role="mstItem" Type="Self.mstItem" Multiplicity="1" />
+    <End Role="trnSalesItem" Type="Self.trnSalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstItem">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="trnSalesItem">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnSalesI__Sales__2DB1C7EE">
+    <End Role="trnSales" Type="Self.trnSales" Multiplicity="1" />
+    <End Role="trnSalesItem" Type="Self.trnSalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trnSales">
+        <PropertyRef Name="SalesId" />
+      </Principal>
+      <Dependent Role="trnSalesItem">
+        <PropertyRef Name="SalesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__trnSalesI__TaxId__2EA5EC27">
+    <End Role="mstTax" Type="Self.mstTax" Multiplicity="1" />
+    <End Role="trnSalesItem" Type="Self.trnSalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstTax">
+        <PropertyRef Name="TaxId" />
+      </Principal>
+      <Dependent Role="trnSalesItem">
+        <PropertyRef Name="TaxId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompnayState">
+    <End Role="mstState" Type="Self.mstState" Multiplicity="1" />
+    <End Role="mstCompany" Type="Self.mstCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mstState">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="mstCompany">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gsoftDBModelStoreContainer">
+    <EntitySet Name="mstAccount" EntityType="Self.mstAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstBrand" EntityType="Self.mstBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstBsgrGroup" EntityType="Self.mstBsgrGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstCompany" EntityType="Self.mstCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstDepartment" EntityType="Self.mstDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstItem" EntityType="Self.mstItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstProduct" EntityType="Self.mstProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstState" EntityType="Self.mstState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mstTax" EntityType="Self.mstTax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trnPurchase" EntityType="Self.trnPurchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trnPurchaseItem" EntityType="Self.trnPurchaseItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trnSales" EntityType="Self.trnSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trnSalesItem" EntityType="Self.trnSalesItem" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__mstAccoun__BsgrI__339FAB6E" Association="Self.FK__mstAccoun__BsgrI__339FAB6E">
+      <End Role="mstBsgrGroup" EntitySet="mstBsgrGroup" />
+      <End Role="mstAccount" EntitySet="mstAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mstAccoun__State__3493CFA7" Association="Self.FK__mstAccoun__State__3493CFA7">
+      <End Role="mstState" EntitySet="mstState" />
+      <End Role="mstAccount" EntitySet="mstAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mstItem__BrandId__2645B050" Association="Self.FK__mstItem__BrandId__2645B050">
+      <End Role="mstBrand" EntitySet="mstBrand" />
+      <End Role="mstItem" EntitySet="mstItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mstItem__Departm__25518C17" Association="Self.FK__mstItem__Departm__25518C17">
+      <End Role="mstDepartment" EntitySet="mstDepartment" />
+      <End Role="mstItem" EntitySet="mstItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mstItem__Product__245D67DE" Association="Self.FK__mstItem__Product__245D67DE">
+      <End Role="mstProduct" EntitySet="mstProduct" />
+      <End Role="mstItem" EntitySet="mstItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__mstItem__TaxId__2739D489" Association="Self.FK__mstItem__TaxId__2739D489">
+      <End Role="mstTax" EntitySet="mstTax" />
+      <End Role="mstItem" EntitySet="mstItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnPurcha__Accou__42E1EEFE" Association="Self.FK__trnPurcha__Accou__42E1EEFE">
+      <End Role="mstAccount" EntitySet="mstAccount" />
+      <End Role="trnPurchase" EntitySet="trnPurchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnPurcha__ItemI__19AACF41" Association="Self.FK__trnPurcha__ItemI__19AACF41">
+      <End Role="mstItem" EntitySet="mstItem" />
+      <End Role="trnPurchaseItem" EntitySet="trnPurchaseItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnPurcha__Purch__1A9EF37A" Association="Self.FK__trnPurcha__Purch__1A9EF37A">
+      <End Role="trnPurchase" EntitySet="trnPurchase" />
+      <End Role="trnPurchaseItem" EntitySet="trnPurchaseItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnPurcha__TaxId__1B9317B3" Association="Self.FK__trnPurcha__TaxId__1B9317B3">
+      <End Role="mstTax" EntitySet="mstTax" />
+      <End Role="trnPurchaseItem" EntitySet="trnPurchaseItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnSales__Accoun__607251E5" Association="Self.FK__trnSales__Accoun__607251E5">
+      <End Role="mstAccount" EntitySet="mstAccount" />
+      <End Role="trnSales" EntitySet="trnSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnSalesI__ItemI__2CBDA3B5" Association="Self.FK__trnSalesI__ItemI__2CBDA3B5">
+      <End Role="mstItem" EntitySet="mstItem" />
+      <End Role="trnSalesItem" EntitySet="trnSalesItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnSalesI__Sales__2DB1C7EE" Association="Self.FK__trnSalesI__Sales__2DB1C7EE">
+      <End Role="trnSales" EntitySet="trnSales" />
+      <End Role="trnSalesItem" EntitySet="trnSalesItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__trnSalesI__TaxId__2EA5EC27" Association="Self.FK__trnSalesI__TaxId__2EA5EC27">
+      <End Role="mstTax" EntitySet="mstTax" />
+      <End Role="trnSalesItem" EntitySet="trnSalesItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompnayState" Association="Self.FK_CompnayState">
+      <End Role="mstState" EntitySet="mstState" />
+      <End Role="mstCompany" EntitySet="mstCompany" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchaseItem>
+@{
+    ViewBag.Title = "GetMonth";
+}
+
+<h2>Monthly Report</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Select Month </h4>
+    <div>
+        <div>
+            <label for="Month">Month:</label>
+            <input type="month" id="Month" name="Month" required>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Generate</button>
+
+}

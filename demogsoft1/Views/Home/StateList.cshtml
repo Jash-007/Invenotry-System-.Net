@@ -1,0 +1,31 @@
+﻿@model IEnumerable<demogsoft1.Models.mstState>
+
+@{
+    ViewBag.Title = "StateList";
+}
+
+<h2>StateList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddState","Home",new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StateName)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateName)
+        </td>
+        
+        
+    </tr>
+}
+
+</table>

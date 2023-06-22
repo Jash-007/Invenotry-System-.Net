@@ -1,0 +1,147 @@
+﻿@model IEnumerable<demogsoft1.Models.trnSalesItem>
+
+@{
+    ViewBag.Title = "Sales Item List";
+}
+
+<h2>Sales Item List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddSalesItem", "Sales", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Add New Account", "AddSaleAccount", "Sales", new { @class = "btn btn-warning" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIscPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NetAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstItem.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstTax.TaxName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trnSale.SalesType)
+        </th>
+
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MRP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DIscPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscAmt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetAmt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mstItem.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mstTax.TaxName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trnSale.SalesType)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditSalesItem", new { id = item.SalesItemId },new {@class="btn btn-primary"}) 
+                    @Html.ActionLink("Details", "DetailsSalesAccount", new { id = item.SalesItemId },new {@class="btn btn-success"}) 
+                    @Html.ActionLink("Delete", "DeletesalesItem", new { id = item.SalesItemId },new {@class="btn btn-danger"})
+                </td>
+            </tr>
+        }
+    }
+else
+            {
+                <p>No data in model</p>
+            }
+    </table>
+<div>
+    @Html.ActionLink("Period Report", "GetSalesDate", "Sales", new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Monthly Report", "GetMonth", "Sales", new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Year Report", "GetYear", "Sales", new { @class = "btn btn-warning" })
+</div>

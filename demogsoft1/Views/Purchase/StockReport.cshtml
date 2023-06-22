@@ -1,0 +1,91 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchaseItem>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Stock Details</h2>
+
+<p>
+    @Html.ActionLink("Add Stock", "AddPurchaseItem","Purchase",new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurcRate)
+        </th>
+        
+     
+        <th>
+            @Html.DisplayNameFor(model => model.SGSTAmount)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.CGSTAmount)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.IGSTAmount)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.MRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstItem.ItemName)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurcRate)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.SGSTAmount)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.CGSTAmount)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.IGSTAmount)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.MRP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstItem.ItemName)
+        </td>
+        
+        <td>
+           
+            @Html.ActionLink("Delete", "DeletePurchaseItem","Purchase", new { id=item.PurchaseItemId },new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

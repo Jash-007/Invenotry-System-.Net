@@ -1,0 +1,200 @@
+﻿@model demogsoft1.Models.trnPurchaseItem
+
+@{
+    ViewBag.Title = "Details Purchase List";
+}
+
+<h2>Details Purchase Item</h2>
+
+<div>
+     
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurcRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurcRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SGSTPrc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SGSTPrc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SGSTAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SGSTAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CGSTPrc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CGSTPrc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CGSTAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CGSTAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IGSTPrc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IGSTPrc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IGSTAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IGSTAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MRP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MRP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mstItem.ItemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mstItem.ItemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mstTax.TaxName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mstTax.TaxName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.PurchaseType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.PurchaseType)
+        </dd>
+
+    </dl>
+</div>
+<h4>Purchase Account Details</h4>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.PurchaseType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.PurchaseType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.VoucherNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.VoucherNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.VoucherDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.VoucherDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.InvoiceType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.InvoiceType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.TotalAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.AccountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.AccountId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.trnPurchase.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trnPurchase.Remarks)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditPurchaseItem", new { id = Model.PurchaseItemId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "PurchaseItem", "Purchase", new { @class = "btn btn-warning" })
+</p>

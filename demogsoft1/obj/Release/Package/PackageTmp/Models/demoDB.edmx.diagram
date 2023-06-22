@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3924dafa722245b29e6af73528df0bcb" Name="Diagram1">
+        <EntityTypeShape EntityType="gsoftDBModel.mstAccount" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstBrand" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstBsgrGroup" Width="1.5" PointX="1.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstCompany" Width="1.5" PointX="3.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstDepartment" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstItem" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstProduct" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstState" Width="1.5" PointX="1.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.mstTax" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.trnPurchase" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.trnPurchaseItem" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.trnSale" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gsoftDBModel.trnSalesItem" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstAccoun__BsgrI__339FAB6E" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstAccoun__State__3493CFA7" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnPurcha__Accou__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnSales__Accoun__607251E5" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstItem__BrandId__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK_CompnayState" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstItem__Departm__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstItem__Product__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__mstItem__TaxId__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnPurcha__ItemI__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnSalesI__ItemI__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnPurcha__TaxId__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnSalesI__TaxId__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnPurcha__Purch__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="gsoftDBModel.FK__trnSalesI__Sales__2DB1C7EE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

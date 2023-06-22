@@ -1,0 +1,38 @@
+﻿@model IEnumerable<demogsoft1.Models.mstBrand>
+
+@{
+    ViewBag.Title = "BrandList";
+}
+
+<h2>BrandList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddBrand","Home",new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+        
+            @Html.ActionLink("Delete", "DeleteBrand", new { id=item.BrandId },new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

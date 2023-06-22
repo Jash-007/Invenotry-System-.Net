@@ -1,0 +1,196 @@
+﻿@model demogsoft1.Models.trnPurchase
+
+@{
+    ViewBag.Title = "DetailsPurchaseItem";
+}
+
+<h2>Details Purchase Account</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoucherDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mstAccount.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mstAccount.AccountName)
+        </dd>
+
+    </dl>
+   
+</div>
+<h3>Products Details</h3>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Qty
+            </th>
+            <th>
+                PurcRate
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                SGSTPrc
+            </th>
+            <th>
+                SGSTAmount
+            </th>
+            <th>
+                CGSTPrc
+            </th>
+            <th>
+                CGSTAmount
+            </th>
+            <th>
+                IGSTPrc
+            </th>
+            <th>
+                IGSTAmount
+            </th>
+            <th>
+                TotalAmount
+            </th>
+            <th>
+                MRP
+            </th>
+            <th>
+                SalesRate
+            </th>
+            <th>
+                InvoiceDate
+            </th>
+            <th>
+                Itemname
+            </th>
+            <th>
+                Tax Type
+            </th>
+            <th>
+                Purc Type
+            </th>
+        </tr>
+
+        @foreach (var item in Model.trnPurchaseItems)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurcRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IGSTPrc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IGSTAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MRP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mstItem.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mstTax.TaxName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trnPurchase.PurchaseType)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditInvoice", new { id = Model.PurchaseId },new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "Purchaseaccount","Purchase",new { @class = "btn btn-warning"})
+</p>

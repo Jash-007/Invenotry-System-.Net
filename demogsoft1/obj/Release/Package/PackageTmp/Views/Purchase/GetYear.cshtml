@@ -1,0 +1,18 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchaseItem>
+@{
+    ViewBag.Title = "Yearly Report";
+}
+
+<h2>Yearly Report</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Select any month of the particular year and get the year report</h4>
+    <div>
+        <label for="Year">Year:</label>
+        <input type="month" id="Year" name="Year" required>
+    </div>
+    <button type="submit" class="btn btn-success">Generate</button>
+
+}

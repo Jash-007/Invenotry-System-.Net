@@ -1,0 +1,219 @@
+﻿@model demogsoft1.Models.Combinedpurchase
+
+@{
+    ViewBag.Title = "AddInvoice";
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+}
+
+<h2>AddInvoice</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>trnPurchase</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.PurchaseType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.trnPurchase.PurchaseType, "Pur", new { htmlAttributes = new { @class = "form-control" } }) Pur
+                @Html.RadioButtonFor(model => model.trnPurchase.PurchaseType, "PurRet", new { htmlAttributes = new { @class = "form-control" } }) PurRet
+                @Html.ValidationMessageFor(model => model.trnPurchase.PurchaseType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.VoucherNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trnPurchase.VoucherNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.trnPurchase.VoucherNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.VoucherDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trnPurchase.VoucherDate, new { htmlAttributes = new { @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.trnPurchase.VoucherDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.InvoiceType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.trnPurchase.PurchaseType, "GST", new { htmlAttributes = new { @class = "form-control" } }) GST
+                @Html.RadioButtonFor(model => model.trnPurchase.PurchaseType, "IGST", new { htmlAttributes = new { @class = "form-control" } }) IGST
+                @Html.ValidationMessageFor(model => model.trnPurchase.InvoiceType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.TotalAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.item.TotalAmt, new { htmlAttributes = new { @class = "totalamt" } })
+                @Html.ValidationMessageFor(model => model.trnPurchase.TotalAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trnPurchase.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.trnPurchase.Remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.trnPurchase.AccountId, "AccountId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.trnPurchase.AccountId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.trnPurchase.AccountId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@using (Html.BeginForm(("Index", "home", FormMethod.Post, new { id = "popupForm" })))
+{
+    <table class="table table-bordered">
+        <caption> Add Products  </caption>
+        <tr>
+            <th>Purchase Id</th>
+            <th>Item Id</th>
+            <th>Tax Id</th>
+            <th>Qty</th>
+            <th>Purc Rate</th>
+
+        </tr>
+        <tr align="center">
+            <td>
+                <input type="text" class="form-control" size="20" placeholder="Purchase Id" id="PurchaseId" name="PurchaseId" required>
+            </td>
+            <td>
+                <input type="text" class="form-control" size="20" placeholder="Item Id" id="ItemId" name="ItemId" required>
+                @*<label id="pro_name" name="pname" id="pname"></label>*@
+            </td>
+            <td>
+                <input type="text" class="form-control pro_price" size="20" id="TaxId" name="TaxId"
+                       placeholder="Tax Id" required>
+            </td>
+            <td>
+                <input type="number" class="form-control pro_price" size="20" id="Qty" name="Qty"
+                       placeholder="qty" min="1" value="1" required>
+            </td>
+
+            <td>
+                <input type="text" class="form-control" size="20" placeholder="Purcahase Rate" id="PurcRate" name="PurcRate" required>
+            </td>
+
+            <td>
+                <button class="btn btn-success" type="button" onclick="addproduct()">
+                    Add
+                </button>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered" id="product_list">
+        <caption> Products</caption>
+        <thead>
+            <tr>
+                <th style="width: 40px">Remove</th>
+                <th>PurchaseId</th>
+                <th>ItemId</th>
+                <th>TaxId</th>
+                <th>Qty</th>
+
+                <th>PurcRate</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+    <div class="form-group">
+        @Html.LabelFor(model => model.item.TotalAmt, "AccountId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.item.TotalAmt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.item.TotalAmt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script>
+$(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy" // Customize the date format if needed
+            });
+});
+    </script>
+    <script>
+$(document).ready(function () {
+            $(".totalamt").val(
+                model.item.TotalAmt // Customize the date format if needed
+            );
+});
+    </script>
+    <script>
+function addproduct() {
+
+            var product = {
+                PurchaseId: $("#PurchaseId").val(),
+                ItemId: $("#ItemId").val(),
+                TaxId: $("#TaxId").val(),
+                Qty: $("#Qty").val(),
+                //discount: 0,
+                PurcRate: $("#PurcRate").val(),
+                button: '<button  type="button" class="btn btn-warning btn-xs")">delete</button>'
+            };
+
+    appproduct(product);}
+    var totalamt=0;
+            addproduct(product){
+                var $tableB = $('#product_list tbody');
+                var $row = $(
+                    "<tr><td><Button type='button' class='btn btn-warning btn-xs' name='record' id='deleterow' >Delete</td>" +
+                    "<td>" +
+                    product.PurchaseId +
+                    "</td><td class=\"price\">" +
+                    product.ItemId +
+                    "</td><td>" +
+                    product.TaxId +
+                    "</td>  <td>" +
+                    product.Qty +
+                    "</td>  <td>" +
+                    product.PurcRate +
+                    "</td> <td>" +
+);
+                $row.data("PurchaseId", product.PurchaseId);
+                $row.data("ItemId", product.ItemId);
+                $row.data("TaxId", product.TaxId);
+                $row.data("Qty", product.Qty);
+                $row.data("PurcRate", product.PurcRate);
+                
+                total += Number(".totalamt");
+                $('#total').val(total);
+
+                console.log(product.total);
+
+                $row.find('#deleterow').click(function (event) {
+                    deleteRow($row);
+                });
+                $tableB.append($row);
+                
+            }
+}
+    </script>
+
+}
+
+

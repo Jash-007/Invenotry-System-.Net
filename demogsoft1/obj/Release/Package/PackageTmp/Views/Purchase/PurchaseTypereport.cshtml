@@ -1,0 +1,24 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchase>
+@{
+    ViewBag.Title = "PurchaseTypereport";
+}
+
+<h2>PurchaseTypereport</h2>
+<p>
+    @Html.ActionLink("Create New", "AddPurchaseAccount", "Purchase", new { @class = "btn btn-primary" })
+</p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Select Purchase Type</h4>
+    <br />
+    <label>
+        <input type="radio" name="type" id="typepur" value="Pur" checked /> Pur
+    </label>
+    <label>
+        <input type="radio" name="type" id="typepurret" value="PurRet" /> PurRet
+    </label>
+    <br>
+    <button type="submit" class="btn btn-success">Generate Report</button>
+
+}

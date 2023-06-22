@@ -1,0 +1,18 @@
+﻿@model IEnumerable<demogsoft1.Models.trnSalesItem>
+@{
+    ViewBag.Title = "GetYear";
+}
+
+<h2>GetYear</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+    <div>
+        <label for="Year">Year:</label>
+        <input type="month" id="Year" name="Year" required>
+    </div>
+    <button type="submit">Generate</button>
+
+}

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<demogsoft1.Models.mstItem>
+
+@{
+    ViewBag.Title = "DisplayItem";
+}
+
+<h2>DisplayItem</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddItem","Item",new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountPrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountFromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstBrand.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstDepartment.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstProduct.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstTax.TaxName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountPrc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountFromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountToDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefaultQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstBrand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstDepartment.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstProduct.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstTax.TaxName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditItem", new { id=item.ItemId }, new {@class="btn btn-success"}) 
+            @Html.ActionLink("Details", "DetailsItem", new { id=item.ItemId }, new {@class="btn btn-primary"}) 
+            @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemId },new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

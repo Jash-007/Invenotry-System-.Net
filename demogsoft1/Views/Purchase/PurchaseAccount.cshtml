@@ -1,0 +1,78 @@
+﻿@model IEnumerable<demogsoft1.Models.trnPurchase>
+
+@{
+    ViewBag.Title = "PurchaseAccount";
+}
+
+<h2>Purchase Account</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddPurchaseInvoice","Purchases", new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstAccount.AccountName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstAccount.AccountName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditInvoice", new { id=item.PurchaseId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Details", "DetailsPurchaseItem", new { id=item.PurchaseId }, new { @class = "btn btn-primary" }) 
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Period Report", "GetPurchaseDate","Purchase" ,new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Monthly Report", "GetMonth","Purchase", new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Year Report", "GetYear","Purchase", new { @class = "btn btn-warning" }) |
+
+    @Html.ActionLink("Types Report", "PurchaseTypeReport","Purchase", new { @class = "btn btn-danger" })
+</div>
+<div>
+    @Html.ActionLink("Back", "EditInvoice", "Purchase", new { @class = "btn btn-warning" })
+</div>

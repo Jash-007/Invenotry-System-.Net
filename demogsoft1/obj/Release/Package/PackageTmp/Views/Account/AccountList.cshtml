@@ -1,0 +1,101 @@
+﻿@model IEnumerable<demogsoft1.Models.mstAccount>
+
+@{
+    ViewBag.Title = "AccountList";
+}
+
+<h2>Account List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddAccount","Account",new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.PinCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GSTNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PANNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstBsgrGroup.GroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mstState.StateName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.PinCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GSTNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PANNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstBsgrGroup.GroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstState.StateName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditAccount", new { id=item.AccountId },new {@class="btn btn-success"}) 
+            @Html.ActionLink("Details", "DetailsAccount", new { id=item.AccountId },new {@class="btn btn-primary"}) 
+            @Html.ActionLink("Delete", "DeleteAccount", new { id=item.AccountId },new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>
